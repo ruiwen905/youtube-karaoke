@@ -4,23 +4,23 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {term: ''}
+  }
+  handleChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
   }
 
   render() {
     return (
-      <div className="search">
-        <input type="text"
+      <div className="search input-field active">
+        <i className="material-icons prefix">search</i>
+        <input id="searchVideo" type="text"
           value={this.state.term}
-          onChange={event => this.onInputChange(event.target.value)} placeholder="Search videos here"/>
+          onChange={event => this.handleChange(event.target.value)}/>
+          <label htmlFor="searchVideo">Search videos</label>
       </div>
     )
-  }
-
-  onInputChange(term) {
-    this.setState({term});
-    this.props.onSearchTermChange(term);
   }
 }
 export default Search;

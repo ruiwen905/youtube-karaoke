@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 // import firebase from "firebase";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,7 +20,7 @@ class App extends Component {
       videos: [],
       selectedVideo: null
     };
-    this.videoSearch('swift')
+    this.videoSearch('drake')
   }
 
   videoSearch(term) {
@@ -35,15 +34,15 @@ class App extends Component {
   render() {
     const videoSearch = _.debounce((term) => { this.videoSearch(term)}, 300);
     return (
-      <div>
+      <div className="container">
         <div className="row">
-          <div className="col-sm-12">
+          <div className="col s12">
             <Search onSearchTermChange={videoSearch} />
           </div>
-          <div className="col-sm-12 col-lg-8">
+          <div className="col s12 l8">
             <Video video={this.state.selectedVideo} />
           </div>
-          <div className="col-sm-12 col-lg-4">
+          <div className="col s12 l4">
             <VideoList
               onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
               videos={this.state.videos} />
